@@ -1,12 +1,39 @@
 import { SectionHeading } from "../layout/SectionHeading";
-import { Button } from "../ui/button"
-import aboutImage from "../../assets/images/dev-jane-02.jpg";
+import { Button } from "../ui/button";
 import { JSX } from "react/jsx-runtime";
+
 export function About(): JSX.Element {
   return (
     <section className="about-section page-shell" id="about">
       <div className="about-image">
-        <img src={aboutImage} alt="Suhail Khalil" />
+        <div className="about-placeholder" role="img" aria-label="Suhail's engineering toolkit">
+          <div className="toolkit-card">
+            <div className="toolkit-header">
+              <span className="toolkit-avatar">SK</span>
+              <div>
+                <strong>Engineering toolkit</strong>
+                <small>Curious by nature</small>
+              </div>
+              <span className="toolkit-status" />
+            </div>
+            <div className="toolkit-line toolkit-line-wide" />
+            <div className="toolkit-line toolkit-line-short" />
+            <div className="toolkit-grid">
+              <span>JS</span>
+              <span>TS</span>
+              <span>AI</span>
+              <span>SQL</span>
+              <span>API</span>
+              <span>CI</span>
+            </div>
+            <div className="toolkit-footer">
+              <span>BUILD</span>
+              <strong>100%</strong>
+            </div>
+          </div>
+          <span className="about-placeholder-dot about-placeholder-dot-one" />
+          <span className="about-placeholder-dot about-placeholder-dot-two" />
+        </div>
         <span className="image-label">
           Curious by nature
           <br />◆ Focused by craft

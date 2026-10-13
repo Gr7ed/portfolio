@@ -1,5 +1,4 @@
 import type { Project } from "../types";
-import dashboardImage from "../assets/images/dashboard.png";
 import experiencesImage from "../assets/images/experiences.png";
 import memeGeneratorImage from "../assets/images/meme-generator.jpg";
 import oldagramImage from "../assets/images/oldagram-square.png";

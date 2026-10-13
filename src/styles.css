@@ -300,12 +300,188 @@ em {
   width: min(100%, 470px);
 }
 
-.hero-visual img {
+.hero-placeholder {
   position: relative;
   z-index: 1;
+  display: grid;
+  place-items: center;
   width: 82%;
   aspect-ratio: 0.82;
-  object-fit: cover;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 25% 20%, rgb(255 255 255 / 70%) 0 2px, transparent 3px),
+    radial-gradient(circle at 75% 72%, rgb(255 255 255 / 55%) 0 2px, transparent 3px),
+    linear-gradient(145deg, #dcebe1, #a9cdb8);
+  background-size: 90px 90px, 120px 120px, auto;
+}
+
+.placeholder-window {
+  position: relative;
+  width: 78%;
+  border: 1px solid rgb(48 93 77 / 35%);
+  background: rgb(244 245 241 / 90%);
+  box-shadow: 18px 22px 0 rgb(48 93 77 / 13%), 0 24px 45px rgb(30 36 32 / 18%);
+  transform: rotate(-4deg);
+}
+
+.placeholder-window-bar {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--white);
+}
+
+.placeholder-window-bar span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+.placeholder-window-bar span:nth-child(2) {
+  background: #e4c995;
+}
+
+.placeholder-window-bar span:nth-child(3) {
+  background: #c58c8c;
+}
+
+.placeholder-window-bar strong {
+  margin-left: auto;
+  color: var(--sage);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.placeholder-window-body {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  min-height: 245px;
+}
+
+.placeholder-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-top: 18px;
+  background: var(--sage);
+}
+
+.placeholder-sidebar i {
+  width: 12px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--mint);
+}
+
+.placeholder-sidebar i:first-child {
+  height: 12px;
+  border-radius: 3px;
+  background: var(--white);
+}
+
+.placeholder-dashboard {
+  padding: 22px 18px;
+}
+
+.placeholder-dashboard-heading,
+.placeholder-metrics {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.placeholder-dashboard-heading span {
+  width: 42%;
+  height: 9px;
+  background: var(--sage);
+}
+
+.placeholder-dashboard-heading span:last-child {
+  width: 20%;
+  background: var(--mint);
+}
+
+.placeholder-chart {
+  align-items: end;
+  display: flex;
+  gap: 7px;
+  height: 110px;
+  margin-top: 28px;
+  padding: 15px 10px 0;
+  border-left: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.placeholder-chart i {
+  flex: 1;
+  height: 45%;
+  background: var(--mint);
+}
+
+.placeholder-chart i:nth-child(2),
+.placeholder-chart i:nth-child(5) {
+  height: 72%;
+  background: var(--sage);
+}
+
+.placeholder-chart i:nth-child(3) {
+  height: 55%;
+}
+
+.placeholder-chart i:nth-child(4) {
+  height: 88%;
+  background: #8fb9a1;
+}
+
+.placeholder-chart i:last-child {
+  height: 64%;
+}
+
+.placeholder-metrics {
+  margin-top: 22px;
+}
+
+.placeholder-metrics span {
+  width: 27%;
+  height: 24px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.placeholder-orbit {
+  position: absolute;
+  border: 1px solid rgb(48 93 77 / 40%);
+  border-radius: 50%;
+}
+
+.placeholder-orbit-one {
+  width: 58px;
+  height: 58px;
+  top: 14%;
+  right: 3%;
+}
+
+.placeholder-orbit-two {
+  width: 18px;
+  height: 18px;
+  top: 23%;
+  right: 16%;
+  background: var(--sage);
+}
+
+.placeholder-code {
+  position: absolute;
+  right: 8%;
+  bottom: 13%;
+  padding: 7px 10px;
+  background: var(--ink);
+  color: var(--mint);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .hero-shape {
@@ -419,10 +595,141 @@ em {
   position: relative;
 }
 
-.about-image img {
+.about-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
   width: 85%;
   aspect-ratio: 0.8;
-  object-fit: cover;
+  overflow: hidden;
+  background: var(--sage);
+}
+
+.about-placeholder::before {
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgb(185 216 197 / 45%);
+  content: "";
+}
+
+.toolkit-card {
+  position: relative;
+  z-index: 1;
+  width: 78%;
+  padding: 24px;
+  background: var(--paper);
+  box-shadow: 14px 14px 0 rgb(185 216 197 / 35%);
+  transform: rotate(3deg);
+}
+
+.toolkit-header {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.toolkit-avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--sage);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.toolkit-header strong,
+.toolkit-header small {
+  display: block;
+}
+
+.toolkit-header strong {
+  font-size: 11px;
+}
+
+.toolkit-header small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.toolkit-status {
+  width: 8px;
+  height: 8px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #7db18f;
+  box-shadow: 0 0 0 4px rgb(125 177 143 / 18%);
+}
+
+.toolkit-line {
+  height: 7px;
+  margin-top: 26px;
+  background: var(--line);
+}
+
+.toolkit-line-wide {
+  width: 72%;
+}
+
+.toolkit-line-short {
+  width: 44%;
+  margin-top: 8px;
+  background: var(--mint);
+}
+
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.toolkit-grid span {
+  padding: 10px 4px;
+  border: 1px solid var(--line);
+  color: var(--sage);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.toolkit-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.toolkit-footer strong {
+  color: var(--sage);
+}
+
+.about-placeholder-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+.about-placeholder-dot-one {
+  top: 12%;
+  right: 12%;
+}
+
+.about-placeholder-dot-two {
+  bottom: 14%;
+  left: 12%;
+  width: 7px;
+  height: 7px;
+  background: var(--white);
 }
 
 .image-label {
@@ -790,7 +1097,7 @@ em {
     padding-bottom: 85px;
   }
 
-  .about-image img {
+  .about-placeholder {
     width: 88%;
   }
 
