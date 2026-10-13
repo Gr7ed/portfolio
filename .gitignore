@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+
+# Build and coverage output
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Environment and local configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs and runtime files
+*.log
+logs/
+*.pid
+*.pid.lock
+
+# Tool caches
+.cache/
+.parcel-cache/
+.vite/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# Test and temporary output
+test-results/
+playwright-report/
+tmp/
+temp/
+
+# Editor and IDE files
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.suo
+*.user
+*.userossc
+*.sln.docstates
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+Desktop.ini
+
+# Local certificates and keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
