@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.jpg";
 
 const navItems = [
   { label: "Home", hash: "#home" },
@@ -24,8 +25,7 @@ export function Header({ isOpen, onToggle, onNavigate }: HeaderProps) {
         onClick={() => onNavigate("#home")}
         aria-label="Go to home"
       >
-        <img src="/img/devjane.png" alt="" />
-        <span>Suhail Khalil</span>
+        <img src={logo} alt="" />
       </button>
       <button
         className="menu-button"
