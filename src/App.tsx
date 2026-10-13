@@ -50,6 +50,7 @@ export default function App() {
     const isCurrentSection =
       location.pathname === "/" && location.hash === hash;
 
+    setMenuOpen(false);
     navigate({ pathname: "/", hash });
 
     if (isCurrentSection) {
