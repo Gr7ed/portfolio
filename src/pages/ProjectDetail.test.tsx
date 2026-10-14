@@ -13,8 +13,10 @@ function LocationProbe() {
 describe("ProjectDetail page", () => {
   it("uses bundled asset URLs for every project image", () => {
     for (const project of projects) {
-      expect(project.image).not.toContain("../src/");
-      expect(project.hero ?? project.image).not.toContain("../src/");
+      expect(project.images.length).toBeGreaterThan(0);
+      for (const image of project.images) {
+        expect(image).not.toContain("../src/");
+      }
     }
   });
 
@@ -24,7 +26,7 @@ describe("ProjectDetail page", () => {
       const user = userEvent.setup();
 
       render(
-        <MemoryRouter initialEntries={["/projects/oldagram"]}>
+        <MemoryRouter         initialEntries={["/projects/quizzical"]}>
           <Routes>
             <Route path="/projects/:projectId" element={<ProjectDetail />} />
           </Routes>
@@ -35,7 +37,12 @@ describe("ProjectDetail page", () => {
       expect(screen.getByRole("heading", { name: "Quizzical" })).toBeInTheDocument();
       expect(screen.getByText("React quiz application")).toBeInTheDocument();
       expect(screen.getByText("Open Trivia DB")).toBeInTheDocument();
-      expect(screen.getByAltText("Quizzical preview")).toBeInTheDocument();
+      expect(screen.getByAltText("Quizzical preview 1 of 4")).toBeInTheDocument();
+      expect(screen.getByText("Image 1 of 4")).toBeInTheDocument();
+
+      await user.click(screen.getByRole("button", { name: "Next project image" }));
+      expect(screen.getByAltText("Quizzical preview 2 of 4")).toBeInTheDocument();
+      expect(screen.getByText("Image 2 of 4")).toBeInTheDocument();
 
       await user.click(screen.getByRole("button", { name: /Back to all work/ }));
       expect(screen.getByTestId("location")).toHaveTextContent("/#work");

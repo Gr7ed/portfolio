@@ -68,7 +68,7 @@ describe("Page sections", () => {
 
       expect(screen.getAllByRole("button")).toHaveLength(6);
       await user.click(screen.getByRole("button", { name: /Quizzical/ }));
-      expect(screen.getByTestId("location")).toHaveTextContent("/projects/oldagram");
+      expect(screen.getByTestId("location")).toHaveTextContent("/projects/quizzical");
     });
   });
 });

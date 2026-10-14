@@ -10,7 +10,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
   return (
     <Card type="button" onClick={() => navigate(`/projects/${project.id}`)}>
       <div className="project-image">
-        <img src={project.image} alt="" />
+        <img src={project.images[0]} alt="" />
         <span className="project-link">
           View project <span aria-hidden="true">↗</span>
         </span>

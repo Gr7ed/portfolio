@@ -985,10 +985,96 @@ em {
   font-size: 11px;
 }
 
+.image-studio {
+  width: min(100%, 1080px);
+  margin: 0 auto;
+}
+
+.image-studio-stage {
+  aspect-ratio: 16 / 10;
+  background: var(--ink);
+  overflow: hidden;
+  position: relative;
+}
+
 .detail-image {
+  height: 100%;
   width: 100%;
-  max-height: 650px;
+  object-fit: contain;
+}
+
+.gallery-control {
+  align-items: center;
+  background: rgba(14, 18, 16, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  color: var(--paper);
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background 160ms ease, border-color 160ms ease;
+  width: 44px;
+}
+
+.gallery-control:hover,
+.gallery-control:focus-visible {
+  background: var(--sage);
+  border-color: var(--sage);
+}
+
+.gallery-control-previous {
+  left: 20px;
+}
+
+.gallery-control-next {
+  right: 20px;
+}
+
+.image-studio-footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 14px;
+}
+
+.image-studio-footer p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.image-thumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.image-thumbnail {
+  border: 1px solid transparent;
+  flex: 0 0 68px;
+  height: 48px;
+  opacity: 0.55;
+  overflow: hidden;
+  padding: 0;
+  transition: border-color 160ms ease, opacity 160ms ease;
+}
+
+.image-thumbnail:hover,
+.image-thumbnail:focus-visible,
+.image-thumbnail.is-active {
+  border-color: var(--sage);
+  opacity: 1;
+}
+
+.image-thumbnail img {
+  height: 100%;
   object-fit: cover;
+  width: 100%;
 }
 
 .detail-footer {
@@ -1024,6 +1110,20 @@ em {
   .floating-bubble {
     right: 16px;
     bottom: 16px;
+  }
+
+  .gallery-control-previous {
+    left: 12px;
+  }
+
+  .gallery-control-next {
+    right: 12px;
+  }
+
+  .image-studio-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .menu-button {
