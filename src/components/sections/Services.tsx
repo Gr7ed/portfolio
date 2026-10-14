@@ -1,5 +1,6 @@
 import { JSX } from "react/jsx-runtime";
 import { SectionHeading } from "../layout/SectionHeading";
+import { useReveal } from "../../hooks/useReveal";
 
 const services = [
   ["01", "Full stack development", "React, Next.js, Node.js, Express, PHP, MySQL, and PostgreSQL applications built for reliability and scale."],
@@ -8,8 +9,14 @@ const services = [
 ];
 
 export function Services(): JSX.Element {
+  const { elementRef, isVisible } = useReveal<HTMLElement>();
+
   return (
-    <section className="services-section" id="services">
+    <section
+      ref={elementRef}
+      className={`services-section reveal ${isVisible ? "is-visible" : ""}`}
+      id="services"
+    >
       <div className="page-shell">
         <SectionHeading
           eyebrow="Core expertise"

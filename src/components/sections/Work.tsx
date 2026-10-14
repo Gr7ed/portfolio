@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { projects } from "../../data/projects";
 import { SectionHeading } from "../layout/SectionHeading";
 import { Card } from "../ui/card";
+import { useReveal } from "../../hooks/useReveal";
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   const navigate = useNavigate();
@@ -26,8 +27,14 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
 }
 
 export function Work() {
+  const { elementRef, isVisible } = useReveal<HTMLElement>();
+
   return (
-    <section className="work-section" id="work">
+    <section
+      ref={elementRef}
+      className={`work-section reveal ${isVisible ? "is-visible" : ""}`}
+      id="work"
+    >
       <div className="page-shell">
         <div className="work-header">
           <SectionHeading

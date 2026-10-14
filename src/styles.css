@@ -134,7 +134,27 @@ em {
   position: relative;
   z-index: 10;
   border-bottom: 1px solid rgb(48 93 77 / 20%);
+}
 
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-header.reveal {
+  transform: translateY(-16px);
+}
+
+.site-header.reveal.is-visible {
+  transform: translateY(0);
 }
 
 .brand {
@@ -173,6 +193,19 @@ em {
   text-decoration-thickness: 2px;
   text-decoration-color: var(--sage);
   text-underline-offset: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .site-header.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .site-nav .nav-contact {
@@ -1003,20 +1036,29 @@ em {
     align-items: flex-start;
     position: fixed;
     inset: 0;
+    z-index: 10;
+    height: 100vh;
+    height: 100dvh;
     flex-direction: column;
-    gap: 26px;
-    padding: 100px 32px 40px;
+    gap: clamp(14px, 4vh, 26px);
+    overflow-y: auto;
+    padding: clamp(76px, 14vh, 100px) 32px clamp(24px, 8vh, 40px);
     background: var(--paper);
     transform: translateY(-100%);
-    transition: transform 0.3s;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s, visibility 0s linear 0.3s;
   }
 
   .site-nav.is-open {
     transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
   }
 
   .site-nav button {
-    font-size: 28px;
+    font-size: clamp(22px, 7vw, 28px);
   }
 
   .site-nav .nav-contact {

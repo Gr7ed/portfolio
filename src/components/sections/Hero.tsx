@@ -1,9 +1,16 @@
 import { Button } from "../ui/button";
 import { JSX } from "react/jsx-runtime";
+import { useReveal } from "../../hooks/useReveal";
 
 export function Hero(): JSX.Element {
+  const { elementRef, isVisible } = useReveal<HTMLElement>();
+
   return (
-    <section className="hero page-shell" id="home">
+    <section
+      ref={elementRef}
+      className={`hero page-shell reveal ${isVisible ? "is-visible" : ""}`}
+      id="home"
+    >
       <div className="hero-copy">
         <p className="eyebrow">Full stack engineer · Madinah, Saudi Arabia</p>
         <h1>

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
+import { useReveal } from "../../hooks/useReveal";
 
 const navItems = [
   { label: "Home", hash: "#home" },
@@ -16,9 +17,13 @@ type HeaderProps = {
 
 export function Header({ isOpen, onToggle, onNavigate }: HeaderProps) {
   const navigate = useNavigate();
+  const { elementRef, isVisible } = useReveal<HTMLElement>();
 
   return (
-    <header className="site-header">
+    <header
+      ref={elementRef}
+      className={`site-header reveal ${isVisible ? "is-visible" : ""}`}
+    >
       <button
         className="brand"
         type="button"

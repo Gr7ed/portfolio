@@ -1,10 +1,17 @@
 import { SectionHeading } from "../layout/SectionHeading";
 import { Button } from "../ui/button";
 import { JSX } from "react/jsx-runtime";
+import { useReveal } from "../../hooks/useReveal";
 
 export function About(): JSX.Element {
+  const { elementRef, isVisible } = useReveal<HTMLElement>();
+
   return (
-    <section className="about-section page-shell" id="about">
+    <section
+      ref={elementRef}
+      className={`about-section page-shell reveal ${isVisible ? "is-visible" : ""}`}
+      id="about"
+    >
       <div className="about-image">
         <div className="about-placeholder" role="img" aria-label="Suhail's engineering toolkit">
           <div className="toolkit-card">

@@ -1,6 +1,14 @@
+import { useReveal } from "../../hooks/useReveal";
+
 export function Footer() {
+  const { elementRef, isVisible } = useReveal<HTMLElement>();
+
   return (
-    <footer className="site-footer" id="contact">
+    <footer
+      ref={elementRef}
+      className={`site-footer reveal ${isVisible ? "is-visible" : ""}`}
+      id="contact"
+    >
       <div className="page-shell">
         <div>
           <p className="eyebrow">Have a technical challenge?</p>
