@@ -5,6 +5,9 @@ import quizzicalImage from "../assets/images/quizzical-1.png";
 import quizzicalOverviewImage from "../assets/images/quizzical-2.png";
 import quizzicalResultsImage from "../assets/images/quizzical-3.png";
 import quizzicalReviewImage from "../assets/images/quizzical-4.png";
+import popChoiceoverviewImage from "../assets/images/popchoice-1.png";
+import popChoiceInputImage from "../assets/images/popchoice-2.png";
+import popChoiceResultImage from "../assets/images/popchoice-3.png";
 import passwordGeneratorImage from "../assets/images/password-generator.jpg";
 import personalDashboardImage from "../assets/images/personal-dashboard.png";
 import tenziesImage from "../assets/images/tenzies.jpg";
@@ -25,22 +28,22 @@ export const projects: Project[] = [
       "A React trivia application with dynamic questions, answer selection, scoring, review, replay, loading states, and accessible feedback.",
   },
   {
-    id: "tenzies",
+    id: "popchoice",
+    title: "Pop Choice",
+    type: "AI movie recommender",
+    images: [popChoiceoverviewImage, popChoiceInputImage, popChoiceResultImage],
+    tags: ["OpenAI", "LangChain", "Supabase"],
+    description:
+      "A beta RAG-powered movie recommender using OpenAI embeddings, LangChain chunking, Supabase vector search, and TMDB.",
+  },
+  {
+    id: "sifo",
     title: "SIFO",
     type: "Senior college project",
     images: [tenziesImage],
     tags: ["PHP", "MySQL", "Donation platform"],
     description:
-      "A donation platform connecting donors and charities through campaigns and food and non-food donation management.",
-  },
-  {
-    id: "password",
-    title: "Pop Choice",
-    type: "AI movie recommender",
-    images: [passwordGeneratorImage],
-    tags: ["OpenAI", "LangChain", "Supabase"],
-    description:
-      "A beta RAG-powered movie recommender using OpenAI embeddings, LangChain chunking, Supabase vector search, and TMDB.",
+    "A donation platform connecting donors and charities through campaigns and food and non-food donation management.",
   },
   {
     id: "meme",
