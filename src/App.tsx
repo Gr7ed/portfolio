@@ -77,7 +77,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/projects/:projectId" element={<ProjectDetail />} />
       </Routes>
-      <FloatingBubble onClick={navigateHome} />
+      {location.pathname === "/" && <FloatingBubble onClick={navigateHome} />}
     </>
   );
 }

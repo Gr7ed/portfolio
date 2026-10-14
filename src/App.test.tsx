@@ -39,4 +39,14 @@ describe("App section navigation", () => {
 
     expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth" });
   });
+
+  it("does not render the floating home bubble on project detail pages", () => {
+    render(
+      <MemoryRouter initialEntries={["/projects/quizzical"]}>
+        <App />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByRole("button", { name: "Back to home" })).not.toBeInTheDocument();
+  });
 });
