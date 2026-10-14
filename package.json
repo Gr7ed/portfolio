@@ -1,8 +1,8 @@
 {
-  "name": "jane-smith-portfolio",
+  "name": "suhail-khalil-portfolio",
   "private": true,
   "version": "1.0.0",
-  "description": "A responsive React portfolio for Jane Smith.",
+  "description": "A responsive React portfolio for Suhail Khalil.",
   "scripts": {
     "start": "vite",
     "dev": "vite",

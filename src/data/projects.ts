@@ -1,19 +1,19 @@
 import type { Project } from "../types";
 import experiencesImage from "../assets/images/experiences.png";
 import memeGeneratorImage from "../assets/images/meme-generator.jpg";
-import oldagramImage from "../assets/images/oldagram-square.png";
-import oldagramHeroImage from "../assets/images/oldagram.png";
+import quizzicalImage from "../assets/images/quizzical-1.png";
+import quizzicaHeroImage from "../assets/images/quizzical-4.png";
 import passwordGeneratorImage from "../assets/images/password-generator.jpg";
 import personalDashboardImage from "../assets/images/personal-dashboard.png";
 import tenziesImage from "../assets/images/tenzies.jpg";
 
 export const projects: Project[] = [
   {
-    id: "oldagram",
+    id: "quizzical",
     title: "Quizzical",
     type: "React quiz application",
-    image: oldagramImage,
-    hero: oldagramHeroImage,
+    image: quizzicalImage,
+    hero: quizzicaHeroImage,
     tags: ["React", "Open Trivia DB", "Accessibility"],
     description:
       "A React trivia application with dynamic questions, answer selection, scoring, review, replay, loading states, and accessible feedback.",
