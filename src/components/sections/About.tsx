@@ -57,7 +57,7 @@ export function About(): JSX.Element {
         <p>{t("aboutParagraph1")}</p>
         <p>{t("aboutParagraph2")}</p>
         <p>{t("aboutParagraph3")}</p>
-        <Button href="mailto:suhail14217@gmail.com" variant="outline">
+        <Button href="mailto:suhail142176@gmail.com" variant="outline">
           {t("startConversation")}
         </Button>
       </div>

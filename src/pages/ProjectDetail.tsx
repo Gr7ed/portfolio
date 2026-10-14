@@ -117,7 +117,7 @@ export function ProjectDetail() {
             <p className="eyebrow">{t("approach")}</p>
             <p>{t("approachCopy")}</p>
           </div>
-          <Button href="mailto:suhail14217@gmail.com" variant="outline">
+          <Button href="mailto:suhail142176@gmail.com" variant="outline">
             {t("startConversation")}
           </Button>
         </div>
