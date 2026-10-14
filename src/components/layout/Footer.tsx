@@ -21,8 +21,8 @@ export function Footer() {
             <em>{t("footerTitleEmphasis")}</em>
           </h2>
         </div>
-        <a className="footer-email" href="mailto:suhail14217@gmail.com">
-          suhail14217@gmail.com <span aria-hidden="true">↗</span>
+        <a className="footer-email" href="mailto:suhail142176@gmail.com">
+          suhail142176@gmail.com <span aria-hidden="true">↗</span>
         </a>
         <div className="footer-bottom">
           <span>{t("copyright")}</span>

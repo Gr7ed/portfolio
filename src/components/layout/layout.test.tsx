@@ -47,8 +47,8 @@ describe("Layout components", () => {
 
       expect(screen.getByRole("contentinfo")).toHaveAttribute("id", "contact");
       expect(
-        screen.getByRole("link", { name: /suhail14217@gmail.com/ }),
-      ).toHaveAttribute("href", "mailto:suhail14217@gmail.com");
+        screen.getByRole("link", { name: /suhail142176@gmail.com/ }),
+      ).toHaveAttribute("href", "mailto:suhail142176@gmail.com");
       expect(screen.getByRole("link", { name: /GitHub/ })).toHaveAttribute(
         "href",
         "https://github.com/Gr7ed",

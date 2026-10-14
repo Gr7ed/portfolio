@@ -22,7 +22,7 @@ export function Hero(): JSX.Element {
         <p className="hero-intro">{t("heroIntro")}</p>
         <div className="hero-actions">
           <Button href="/#work">{t("viewProjects")}</Button>
-          <a className="text-link" href="mailto:suhail14217@gmail.com">
+          <a className="text-link" href="mailto:suhail142176@gmail.com">
             {t("getInTouch")} <span aria-hidden="true">↗</span>
           </a>
         </div>

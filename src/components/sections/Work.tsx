@@ -47,7 +47,7 @@ export function Work() {
             copy={t("workCopy")}
             light
           />
-          <a className="text-link light-link" href="mailto:suhail14217@gmail.com">
+          <a className="text-link light-link" href="mailto:suhail142176@gmail.com">
             {t("technicalChallenge")} <span aria-hidden="true">↗</span>
           </a>
         </div>
