@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import clsx from "clsx";
 
 type SectionHeadingProps = {
   eyebrow: string;
@@ -14,7 +15,7 @@ export function SectionHeading({
   light = false,
 }: SectionHeadingProps) {
   return (
-    <div className={`section-heading ${light ? "section-heading-light" : ""}`}>
+    <div className={clsx("section-heading", light && "section-heading-light")}>
       <p className="eyebrow">{eyebrow}</p>
       <h2>{title}</h2>
       {copy && <p className="section-copy">{copy}</p>}

@@ -1,28 +1,31 @@
 import { useReveal } from "../../hooks/useReveal";
+import { useLocale } from "../../i18n";
+import clsx from "clsx";
 
 export function Footer() {
+  const { t } = useLocale();
   const { elementRef, isVisible } = useReveal<HTMLElement>();
 
   return (
     <footer
       ref={elementRef}
-      className={`site-footer reveal ${isVisible ? "is-visible" : ""}`}
+      className={clsx("site-footer", "reveal", isVisible && "is-visible")}
       id="contact"
     >
       <div className="page-shell">
         <div>
-          <p className="eyebrow">Have a technical challenge?</p>
+          <p className="eyebrow">{t("technicalChallenge")}</p>
           <h2>
-            Let&apos;s build
+            {t("footerTitleBefore")}
             <br />
-            <em>something useful.</em>
+            <em>{t("footerTitleEmphasis")}</em>
           </h2>
         </div>
         <a className="footer-email" href="mailto:suhail14217@gmail.com">
           suhail14217@gmail.com <span aria-hidden="true">↗</span>
         </a>
         <div className="footer-bottom">
-          <span>© 2026 Suhail Khalil Abdulshakur</span>
+          <span>{t("copyright")}</span>
           <div>
             <a
               className="social-link"

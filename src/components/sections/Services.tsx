@@ -1,27 +1,29 @@
 import { JSX } from "react/jsx-runtime";
 import { SectionHeading } from "../layout/SectionHeading";
 import { useReveal } from "../../hooks/useReveal";
-
-const services = [
-  ["01", "Full stack development", "React, Next.js, Node.js, Express, PHP, MySQL, and PostgreSQL applications built for reliability and scale."],
-  ["02", "Automation & delivery", "Tested workflows, relational data models, and CI/CD pipelines that improve operational efficiency and enable zero-downtime releases."],
-  ["03", "Infrastructure & security", "IP cameras, switches, Wi-Fi access points, security policies, and practical cybersecurity-minded IT support."],
-];
+import { useLocale } from "../../i18n";
+import clsx from "clsx";
 
 export function Services(): JSX.Element {
+  const { t } = useLocale();
   const { elementRef, isVisible } = useReveal<HTMLElement>();
+  const services = [
+    ["01", t("serviceFullStack"), t("serviceFullStackCopy")],
+    ["02", t("serviceAutomation"), t("serviceAutomationCopy")],
+    ["03", t("serviceInfrastructure"), t("serviceInfrastructureCopy")],
+  ];
 
   return (
     <section
       ref={elementRef}
-      className={`services-section reveal ${isVisible ? "is-visible" : ""}`}
+      className={clsx("services-section", "reveal", isVisible && "is-visible")}
       id="services"
     >
       <div className="page-shell">
         <SectionHeading
-          eyebrow="Core expertise"
-          title={<>Technology with <em>purpose.</em></>}
-          copy="A hands-on engineering approach across applications, infrastructure, AI, and cybersecurity."
+          eyebrow={t("coreExpertise")}
+          title={<>{t("technologyBefore")} <em>{t("technologyEmphasis")}</em></>}
+          copy={t("expertiseCopy")}
           light
         />
         <div className="services-grid">

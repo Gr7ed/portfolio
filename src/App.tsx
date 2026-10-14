@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { About } from "./components/sections/About";
 import { Hero } from "./components/sections/Hero";
@@ -8,6 +9,7 @@ import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
 import { FloatingBubble } from "./components/ui/FloatingBubble";
 import { ProjectDetail } from "./pages/ProjectDetail";
+import { useLocale } from "./i18n";
 
 function Home() {
   const location = useLocation();
@@ -37,6 +39,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { locale } = useLocale();
 
   useEffect(() => {
     setMenuOpen(false);
@@ -67,7 +70,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <div className={clsx("app-shell", `locale-${locale}`)}>
       <Header
         isOpen={menuOpen}
         onToggle={() => setMenuOpen((open) => !open)}
@@ -78,6 +81,6 @@ export default function App() {
         <Route path="/projects/:projectId" element={<ProjectDetail />} />
       </Routes>
       {location.pathname === "/" && <FloatingBubble onClick={navigateHome} />}
-    </>
+    </div>
   );
 }

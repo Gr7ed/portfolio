@@ -46,7 +46,7 @@ describe("Page sections", () => {
       render(<About />);
 
       expect(screen.getByRole("heading", { name: /Building for today/ })).toBeInTheDocument();
-      expect(screen.getByRole("img", { name: "Suhail's engineering toolkit" })).toBeInTheDocument();
+      expect(screen.getByRole("img", { name: "Engineering toolkit" })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: "Start a conversation" })).toHaveAttribute(
         "href",
         "mailto:suhail14217@gmail.com",

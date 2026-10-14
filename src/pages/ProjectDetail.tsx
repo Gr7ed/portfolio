@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Button } from "../components/ui/button";
+import { useLocale } from "../i18n";
 
 export function ProjectDetail() {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
-  const project = projects.find((item) => item.id === projectId);
+  const { t, localizeProject } = useLocale();
+  const sourceProject = projects.find((item) => item.id === projectId);
+  const project = sourceProject ? localizeProject(sourceProject) : undefined;
   const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
@@ -21,10 +25,10 @@ export function ProjectDetail() {
     return (
       <main className="project-detail">
         <div className="page-shell">
-          <p className="eyebrow">Project not found</p>
-          <h1>That project does not exist.</h1>
+          <p className="eyebrow">{t("projectNotFound")}</p>
+          <h1>{t("projectMissing")}</h1>
           <button className="back-link" type="button" onClick={() => navigate("/")}>
-            ← Back home
+            ← {t("backHome")}
           </button>
         </div>
       </main>
@@ -44,7 +48,7 @@ export function ProjectDetail() {
     <main className="project-detail">
       <div className="page-shell">
         <button className="back-link" type="button" onClick={() => navigate("/#work")}>
-          ← Back to all work
+          ← {t("backToWork")}
         </button>
         <div className="detail-heading">
           <p className="eyebrow">{project.type}</p>
@@ -54,12 +58,16 @@ export function ProjectDetail() {
             {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
           </div>
         </div>
-        <section className="image-studio" aria-label={`${project.title} image gallery`}>
+        <section className="image-studio" aria-label={`${project.title} ${t("projectGallery")}`}>
           <div className="image-studio-stage">
             <img
               className="detail-image"
               src={currentImage}
-              alt={`${project.title} preview ${activeImage + 1} of ${imageCount}`}
+              alt={t("imagePreview", {
+                title: project.title,
+                current: activeImage + 1,
+                total: imageCount,
+              })}
             />
             {imageCount > 1 && (
               <>
@@ -67,7 +75,7 @@ export function ProjectDetail() {
                   className="gallery-control gallery-control-previous"
                   type="button"
                   onClick={showPreviousImage}
-                  aria-label="Previous project image"
+                  aria-label={t("previousImage")}
                 >
                   <span aria-hidden="true">←</span>
                 </button>
@@ -75,7 +83,7 @@ export function ProjectDetail() {
                   className="gallery-control gallery-control-next"
                   type="button"
                   onClick={showNextImage}
-                  aria-label="Next project image"
+                  aria-label={t("nextImage")}
                 >
                   <span aria-hidden="true">→</span>
                 </button>
@@ -85,16 +93,16 @@ export function ProjectDetail() {
           {imageCount > 1 && (
             <div className="image-studio-footer">
               <p aria-live="polite">
-                Image {activeImage + 1} of {imageCount}
+                {t("imageOf", { current: activeImage + 1, total: imageCount })}
               </p>
-              <div className="image-thumbnails" aria-label="Choose project image">
+              <div className="image-thumbnails" aria-label={t("chooseProjectImage")}>
                 {project.images.map((image, index) => (
                   <button
-                    className={`image-thumbnail ${index === activeImage ? "is-active" : ""}`}
+                    className={clsx("image-thumbnail", index === activeImage && "is-active")}
                     type="button"
                     key={image}
                     onClick={() => setActiveImage(index)}
-                    aria-label={`Show project image ${index + 1}`}
+                    aria-label={`${t("showProjectImage")} ${index + 1}`}
                     aria-pressed={index === activeImage}
                   >
                     <img src={image} alt="" />
@@ -106,15 +114,11 @@ export function ProjectDetail() {
         </section>
         <div className="detail-footer">
           <div>
-            <p className="eyebrow">The approach</p>
-            <p>
-              I focused on making the experience feel simple and intentional,
-              with a clear visual hierarchy and responsive behavior that works
-              as naturally on a phone as it does on a desktop.
-            </p>
+            <p className="eyebrow">{t("approach")}</p>
+            <p>{t("approachCopy")}</p>
           </div>
           <Button href="mailto:suhail14217@gmail.com" variant="outline">
-            Start a conversation
+            {t("startConversation")}
           </Button>
         </div>
       </div>

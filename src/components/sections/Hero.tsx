@@ -1,44 +1,43 @@
 import { Button } from "../ui/button";
 import { JSX } from "react/jsx-runtime";
 import { useReveal } from "../../hooks/useReveal";
+import { useLocale } from "../../i18n";
+import clsx from "clsx";
 
 export function Hero(): JSX.Element {
+  const { t } = useLocale();
   const { elementRef, isVisible } = useReveal<HTMLElement>();
 
   return (
     <section
       ref={elementRef}
-      className={`hero page-shell reveal ${isVisible ? "is-visible" : ""}`}
+      className={clsx("hero", "page-shell", "reveal", isVisible && "is-visible")}
       id="home"
     >
       <div className="hero-copy">
-        <p className="eyebrow">Full stack engineer · Madinah, Saudi Arabia</p>
+        <p className="eyebrow">{t("location")}</p>
         <h1>
-          Engineering <em>secure</em> digital solutions.
+          {t("heroTitleBefore")} <em>{t("heroTitleEmphasis")}</em> {t("heroTitleAfter")}
         </h1>
-        <p className="hero-intro">
-          I&apos;m Suhail, a full stack engineer and IT specialist with 5+ years
-          of experience building web applications, automating workflows, and
-          deploying reliable enterprise infrastructure.
-        </p>
+        <p className="hero-intro">{t("heroIntro")}</p>
         <div className="hero-actions">
-          <Button href="/#work">View my projects</Button>
+          <Button href="/#work">{t("viewProjects")}</Button>
           <a className="text-link" href="mailto:suhail14217@gmail.com">
-            Get in touch <span aria-hidden="true">↗</span>
+            {t("getInTouch")} <span aria-hidden="true">↗</span>
           </a>
         </div>
         <div className="hero-meta">
           <span>
-            <strong>5+</strong> years of experience
+            <strong>5+</strong> {t("yearsExperience")}
           </span>
           <span>
-            <strong>3.60</strong> / 4.00 GPA
+            <strong>3.60</strong> {t("gpa")}
           </span>
         </div>
       </div>
       <div className="hero-visual">
         <div className="hero-shape" />
-        <div className="hero-placeholder" role="img" aria-label="Secure digital workspace">
+        <div className="hero-placeholder" role="img" aria-label={t("secureWorkspace")}>
           <div className="placeholder-window">
             <div className="placeholder-window-bar">
               <span />
@@ -79,9 +78,9 @@ export function Hero(): JSX.Element {
           <span className="placeholder-code">&lt;/&gt;</span>
         </div>
         <span className="hero-note">
-          Build with
+          {t("buildWith")}
           <br />
-          <strong>purpose.</strong>
+          <strong>{t("purpose")}</strong>
         </span>
       </div>
     </section>

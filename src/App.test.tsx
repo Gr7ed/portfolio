@@ -2,13 +2,16 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import App from "./App";
+import { LocaleProvider } from "./i18n";
 
 describe("App section navigation", () => {
   it("closes the mobile menu when Home is selected", () => {
     render(
-      <MemoryRouter initialEntries={["/#home"]}>
-        <App />
-      </MemoryRouter>,
+      <LocaleProvider>
+        <MemoryRouter initialEntries={["/#home"]}>
+          <App />
+        </MemoryRouter>
+      </LocaleProvider>,
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Toggle menu" }));
@@ -29,9 +32,11 @@ describe("App section navigation", () => {
     const scrollIntoView = vi.spyOn(HTMLElement.prototype, "scrollIntoView");
 
     render(
-      <MemoryRouter initialEntries={["/#home"]}>
-        <App />
-      </MemoryRouter>,
+      <LocaleProvider>
+        <MemoryRouter initialEntries={["/#home"]}>
+          <App />
+        </MemoryRouter>
+      </LocaleProvider>,
     );
 
     scrollIntoView.mockClear();
@@ -42,9 +47,11 @@ describe("App section navigation", () => {
 
   it("does not render the floating home bubble on project detail pages", () => {
     render(
-      <MemoryRouter initialEntries={["/projects/quizzical"]}>
-        <App />
-      </MemoryRouter>,
+      <LocaleProvider>
+        <MemoryRouter initialEntries={["/projects/quizzical"]}>
+          <App />
+        </MemoryRouter>
+      </LocaleProvider>,
     );
 
     expect(screen.queryByRole("button", { name: "Back to home" })).not.toBeInTheDocument();

@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes, PropsWithChildren } from "react";
+import clsx from "clsx";
 
 type ButtonProps = PropsWithChildren<
   AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -13,7 +14,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <a className={`button button-${variant} ${className}`.trim()} {...props}>
+    <a className={clsx("button", `button-${variant}`, className)} {...props}>
       {children}
     </a>
   );

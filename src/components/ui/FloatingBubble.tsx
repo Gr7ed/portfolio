@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useLocale } from "../../i18n";
 
 type FloatingBubbleProps = {
   onClick: () => void;
 };
 
 export function FloatingBubble({ onClick }: FloatingBubbleProps) {
+  const { t } = useLocale();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export function FloatingBubble({ onClick }: FloatingBubbleProps) {
     <button
       className="floating-bubble"
       type="button"
-      aria-label="Back to home"
+      aria-label={t("backToHome")}
       onClick={onClick}
     >
       <span className="floating-bubble-arrow" aria-hidden="true">
