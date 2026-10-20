@@ -49,7 +49,7 @@ describe("Page sections", () => {
       expect(screen.getByRole("img", { name: "Engineering toolkit" })).toBeInTheDocument();
       expect(screen.getByRole("link", { name: "Start a conversation" })).toHaveAttribute(
         "href",
-        "mailto:suhail14217@gmail.com",
+        "mailto:suhail142176@gmail.com",
       );
     });
   });
