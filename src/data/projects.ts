@@ -8,7 +8,6 @@ import quizzicalReviewImage from "../assets/images/quizzical-4.png";
 import popChoiceoverviewImage from "../assets/images/popchoice-1.png";
 import popChoiceInputImage from "../assets/images/popchoice-2.png";
 import popChoiceResultImage from "../assets/images/popchoice-3.png";
-import passwordGeneratorImage from "../assets/images/password-generator.jpg";
 import personalDashboardImage from "../assets/images/personal-dashboard.png";
 import tenziesImage from "../assets/images/tenzies.jpg";
 
@@ -46,7 +45,7 @@ export const projects: Project[] = [
     "A donation platform connecting donors and charities through campaigns and food and non-food donation management.",
   },
   {
-    id: "meme",
+    id: "it-infrastructure",
     title: "Enterprise network deployment",
     type: "IT infrastructure",
     images: [memeGeneratorImage],
