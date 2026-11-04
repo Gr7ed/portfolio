@@ -1,12 +1,19 @@
 import type { Project } from "../types";
-import quizzicalImage from "../assets/images/quizzical-1.png";
-import quizzicalOverviewImage from "../assets/images/quizzical-2.png";
-import quizzicalResultsImage from "../assets/images/quizzical-3.png";
-import quizzicalReviewImage from "../assets/images/quizzical-4.png";
-import popChoiceoverviewImage from "../assets/images/popchoice-1.png";
-import popChoiceInputImage from "../assets/images/popchoice-2.png";
-import popChoiceResultImage from "../assets/images/popchoice-3.png";
-import tenziesImage from "../assets/images/tenzies.jpg";
+import quizzicalImage from "../assets/images/quizzical/quizzical-1.png";
+import quizzicalOverviewImage from "../assets/images/quizzical/quizzical-2.png";
+import quizzicalResultsImage from "../assets/images/quizzical/quizzical-3.png";
+import quizzicalReviewImage from "../assets/images/quizzical/quizzical-4.png";
+import popChoiceoverviewImage from "../assets/images/popchoice/popchoice-1.png";
+import popChoiceInputImage from "../assets/images/popchoice/popchoice-2.png";
+import popChoiceResultImage from "../assets/images/popchoice/popchoice-3.png";
+import allCampaigns from "../assets/images/sifo/All-Campaigns.png";
+import charityCampaigns from "../assets/images/sifo/charity-campaigns.png";
+import charityDashboard from "../assets/images/sifo/charity-dashboard.png";
+import donorDashboard from "../assets/images/sifo/donor-dashboard.png";
+import donorDonations from "../assets/images/sifo/donor-donations.png";
+import donorSignup from "../assets/images/sifo/donor-signup.png";
+import donateFood from "../assets/images/sifo/food-donate.png";
+import Landing from "../assets/images/sifo/home-index.png";
 
 export const projects: Project[] = [
   {
@@ -35,6 +42,7 @@ export const projects: Project[] = [
     description:
       "A beta RAG-powered movie recommender using OpenAI embeddings, LangChain chunking, Supabase vector search, and TMDB.",
     githubUrl: "https://github.com/Gr7ed/pop-choice-app",
+    url: "https://popchoice.vercel.app/",
     createdAt: "2025-01-01",
     updatedAt: "2026-10-21",
   },
@@ -42,7 +50,7 @@ export const projects: Project[] = [
     id: "sifo",
     title: "SIFO",
     type: "Senior college project",
-    images: [tenziesImage],
+    images: [Landing, charityDashboard, donorDashboard, donorDonations, donorSignup, donateFood, allCampaigns, charityCampaigns],
     tags: ["PHP", "MySQL", "Donation platform"],
     description:
       "A donation platform connecting donors and charities through campaigns and food and non-food donation management.",
