@@ -39,6 +39,14 @@ describe("ProjectDetail page", () => {
       expect(screen.getByText("Open Trivia DB")).toBeInTheDocument();
       expect(screen.getByAltText("Quizzical preview 1 of 4")).toBeInTheDocument();
       expect(screen.getByText("Image 1 of 4")).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "View source on GitHub" })).toHaveAttribute(
+        "href",
+        "https://github.com/Gr7ed/quizzical-app",
+      );
+      expect(screen.getByRole("link", { name: "View source on GitHub" })).toHaveAttribute(
+        "target",
+        "_blank",
+      );
 
       await user.click(screen.getByRole("button", { name: "Next project image" }));
       expect(screen.getByAltText("Quizzical preview 2 of 4")).toBeInTheDocument();
@@ -46,6 +54,25 @@ describe("ProjectDetail page", () => {
 
       await user.click(screen.getByRole("button", { name: /Back to all work/ }));
       expect(screen.getByTestId("location")).toHaveTextContent("/#work");
+    });
+
+    it("renders both optional project links when metadata provides them", () => {
+      render(
+        <MemoryRouter initialEntries={["/projects/popchoice"]}>
+          <Routes>
+            <Route path="/projects/:projectId" element={<ProjectDetail />} />
+          </Routes>
+        </MemoryRouter>,
+      );
+
+      expect(screen.getByRole("link", { name: "Live site" })).toHaveAttribute(
+        "href",
+        "https://popchoice.vercel.app/",
+      );
+      expect(screen.getByRole("link", { name: "View source on GitHub" })).toHaveAttribute(
+        "href",
+        "https://github.com/Gr7ed/pop-choice-app",
+      );
     });
   });
 

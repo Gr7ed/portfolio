@@ -968,11 +968,23 @@ em {
 }
 
 .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 0;
   background: none;
   color: var(--muted);
   font-size: 13px;
 }
+.back-link:hover {
+  color: var(--sage);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--sage);
+  text-underline-offset: 8px;
+}
+
+
 
 .detail-heading {
   max-width: 700px;
@@ -1025,32 +1037,47 @@ em {
 
 .gallery-control {
   align-items: center;
-  background: rgba(14, 18, 16, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
+  background: linear-gradient(90deg, rgb(14 18 16 / 48%), transparent);
+  border: 0;
+  border-radius: 0;
   color: var(--paper);
   display: flex;
-  height: 44px;
+  height: 100%;
   justify-content: center;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: background 160ms ease, border-color 160ms ease;
-  width: 44px;
+  bottom: 0;
+  top: 0;
+  transform: none;
+  transition: background 160ms ease;
+  width: 72px;
 }
 
 .gallery-control:hover,
 .gallery-control:focus-visible {
   background: var(--sage);
-  border-color: var(--sage);
+}
+
+.gallery-control:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+.gallery-control svg {
+  flex: 0 0 auto;
 }
 
 .gallery-control-previous {
-  inset-inline-start: 20px;
+  inset-inline-start: 0px;
 }
 
 .gallery-control-next {
-  inset-inline-end: 20px;
+  background: linear-gradient(270deg, rgb(14 18 16 / 48%), transparent);
+  inset-inline-end: 0px;
+}
+
+.gallery-control-next:hover,
+.gallery-control-next:focus-visible {
+  background: var(--sage);
 }
 
 .image-studio-footer {
@@ -1095,6 +1122,20 @@ em {
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+
+.detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 28px auto 0;
+}
+
+.detail-links .button {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
 }
 
 .detail-footer {
@@ -1165,9 +1206,11 @@ em {
   transform: scaleX(-1);
 }
 
-[dir="rtl"] .back-link {
-  direction: rtl;
+[dir="rtl"] .arrow {
+  transform: scaleX(-1);
 }
+
+
 
 @media (max-width: 700px) {
   .page-shell {
@@ -1184,11 +1227,11 @@ em {
   }
 
   .gallery-control-previous {
-    inset-inline-start: 12px;
+    inset-inline-start: 0px;
   }
 
   .gallery-control-next {
-    inset-inline-end: 12px;
+    inset-inline-end: 0px;
   }
 
   @media (max-width: 700px) {
@@ -1201,6 +1244,10 @@ em {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .detail-links {
+    justify-content: flex-start;
   }
 
   .menu-button {

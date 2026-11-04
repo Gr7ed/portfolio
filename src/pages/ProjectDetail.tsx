@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { ArrowLeft, ArrowRight, Code2, ExternalLink } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Button } from "../components/ui/button";
@@ -48,7 +49,8 @@ export function ProjectDetail() {
     <main className="project-detail">
       <div className="page-shell">
         <button className="back-link" type="button" onClick={() => navigate("/#work")}>
-          ← {t("backToWork")}
+          <ArrowLeft className="arrow" aria-hidden="true" size={18} strokeWidth={1.8} />
+          {t("backToWork")}
         </button>
         <div className="detail-heading">
           <p className="eyebrow">{project.type}</p>
@@ -77,7 +79,7 @@ export function ProjectDetail() {
                   onClick={showPreviousImage}
                   aria-label={t("previousImage")}
                 >
-                  <span aria-hidden="true">←</span>
+                  <ArrowLeft className="arrow" aria-hidden="true" size={18} strokeWidth={1.8} />
                 </button>
                 <button
                   className="gallery-control gallery-control-next"
@@ -85,7 +87,7 @@ export function ProjectDetail() {
                   onClick={showNextImage}
                   aria-label={t("nextImage")}
                 >
-                  <span aria-hidden="true">→</span>
+                  <ArrowRight className="arrow" aria-hidden="true" size={18} strokeWidth={1.8} />
                 </button>
               </>
             )}
@@ -112,6 +114,32 @@ export function ProjectDetail() {
             </div>
           )}
         </section>
+        {(project.url || project.githubUrl) && (
+          <nav className="detail-links" aria-label={t("projectLinks")}>
+            {project.url && (
+              <Button
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                variant="outline"
+              >
+                <ExternalLink aria-hidden="true" size={16} strokeWidth={1.8} />
+                {t("liveSite")}
+              </Button>
+            )}
+            {project.githubUrl && (
+              <Button
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                variant="outline"
+              >
+                <Code2 aria-hidden="true" size={16} strokeWidth={1.8} />
+                {t("viewSource")}
+              </Button>
+            )}
+          </nav>
+        )}
         <div className="detail-footer">
           <div>
             <p className="eyebrow">{t("approach")}</p>
