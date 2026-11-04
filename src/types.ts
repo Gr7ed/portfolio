@@ -5,4 +5,8 @@ export type Project = {
   images: string[];
   tags: string[];
   description: string;
+  url?: string;
+  githubUrl?: string;
+  createdAt: string;
+  updatedAt: string;
 };
