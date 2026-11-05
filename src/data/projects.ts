@@ -42,7 +42,7 @@ export const projects: Project[] = [
     description:
       "A beta RAG-powered movie recommender using OpenAI embeddings, LangChain chunking, Supabase vector search, and TMDB.",
     githubUrl: "https://github.com/Gr7ed/pop-choice-app",
-    url: "https://popchoice.vercel.app/",
+    url: "https://pop-choice-app-production.suhail142176.workers.dev/",
     createdAt: "2025-01-01",
     updatedAt: "2026-10-21",
   },
