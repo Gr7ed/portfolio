@@ -113,7 +113,7 @@ const translations = {
     aboutTitleEmphasis: "ونتعلم للمستقبل.",
     aboutParagraph1: "أعمل مهندس برمجيات متكامل في شركة دالسين، وأمتلك أكثر من 5 سنوات من الخبرة في هندسة البرمجيات والبنية التحتية لتقنية المعلومات والتسويق والعقارات. أحمل درجة البكالوريوس في تقنية المعلومات من الجامعة السعودية الإلكترونية بمعدل 3.60 من 4.00.",
     aboutParagraph2: "تشمل أعمالي الحديثة تطبيقات React وNext.js وExpress، والاختبارات الآلية، وقواعد البيانات العلائقية، وخطوط CI/CD، والإصدارات دون توقف، ونشر شبكات المؤسسات. كما أهتم بتطبيقات الذكاء الاصطناعي وتطوير الأمن السيبراني المؤسسي.",
-    aboutParagraph3: "تشمل أدواتي JavaScript وTypeScript وHTML5 وCSS3 وNode.js وPHP وMySQL وPostgreSQL وJest وVitest وGit وDocker وLinux وخطوط RAG. أنا متاح للانتقال أو فرص العمل عن بُعد.",
+    aboutParagraph3: "تشمل أدواتي JavaScript وTypeScript وHTML5 وCSS3 وNode.js وPHP وMySQL وPostgreSQL وJest وVitest وGit وDocker وLinux وخطوط RAG.",
     startConversation: "ابدأ محادثة",
     curiousByNature: "فضولي بطبيعتي",
     focusedByCraft: "أركز على الإتقان",

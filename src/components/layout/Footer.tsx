@@ -15,9 +15,9 @@ export function Footer() {
       <div className="page-shell">
         <div>
           <p className="eyebrow">{t("technicalChallenge")}</p>
-          <h2>
+          <h2 >
             {t("footerTitleBefore")}
-            <br />
+            <br/>
             <em>{t("footerTitleEmphasis")}</em>
           </h2>
         </div>
