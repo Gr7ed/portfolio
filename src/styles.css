@@ -1054,7 +1054,7 @@ em {
   top: 0;
   transform: none;
   transition: background 160ms ease;
-  width: 72px;
+  width: 50px;
 }
 
 .gallery-control:hover,
@@ -1250,6 +1250,9 @@ em {
 
   .gallery-control-next {
     inset-inline-end: 0px;
+  }
+  .gallery-control{
+    width: 30px;
   }
 
   @media (max-width: 700px) {
