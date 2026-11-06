@@ -1019,6 +1019,7 @@ em {
 }
 
 .image-studio {
+  box-sizing: border-box;
   width: min(100%, 1080px);
   margin: 0 auto;
 }
@@ -1026,12 +1027,15 @@ em {
 .image-studio-stage {
   aspect-ratio: 16 / 10;
   background: var(--ink);
+  max-width: 100%;
   overflow: hidden;
   position: relative;
 }
 
 .detail-image {
+  display: block;
   height: 100%;
+  max-width: 100%;
   width: 100%;
   object-fit: contain;
 }
@@ -1087,9 +1091,11 @@ em {
   justify-content: space-between;
   gap: 24px;
   margin-top: 14px;
+  min-width: 0;
 }
 
 .image-studio-footer p {
+  flex: 0 0 auto;
   color: var(--muted);
   font-size: 12px;
   margin: 0;
@@ -1098,8 +1104,12 @@ em {
 
 .image-thumbnails {
   display: flex;
+  flex: 1 1 auto;
   gap: 8px;
   overflow-x: auto;
+  min-width: 0;
+  padding: 2px;
+  scrollbar-width: thin;
 }
 
 .image-thumbnail {
@@ -1120,7 +1130,9 @@ em {
 }
 
 .image-thumbnail img {
+  display: block;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
   width: 100%;
 }
@@ -1250,6 +1262,10 @@ em {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .image-thumbnails {
+    width: 100%;
   }
 
   .detail-links {
