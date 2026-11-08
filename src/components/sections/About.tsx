@@ -4,6 +4,8 @@ import { JSX } from "react/jsx-runtime";
 import { useReveal } from "../../hooks/useReveal";
 import { useLocale } from "../../i18n";
 import clsx from "clsx";
+import { Experience } from "./Experience";
+import { Skills } from "./Skills";
 
 export function About(): JSX.Element {
   const { t } = useLocale();
@@ -12,7 +14,7 @@ export function About(): JSX.Element {
   return (
     <section
       ref={elementRef}
-      className={clsx("mx-auto grid w-[calc(100%-2rem)] max-w-6xl gap-12 py-20 sm:w-[calc(100%-3rem)] sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20", "reveal", isVisible && "is-visible")}
+      className={clsx("mx-auto grid w-[calc(100%-2rem)] max-w-6xl gap-6 pt-20 sm:w-[calc(100%-3rem)] sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20", "reveal", isVisible && "is-visible")}
       id="about"
     >
       <div>
@@ -26,10 +28,10 @@ export function About(): JSX.Element {
               </div>
               <span className="ms-auto size-2 rounded-full bg-(--accent) shadow-[0_0_14px_var(--accent)]" />
             </div>
-            <div className="mt-7 h-2 rounded bg-white/10" />
-            <div className="mt-2 h-2 w-3/5 rounded bg-white/10" />
+            <div className="mt-7 h-2 rounded bg-(--visual-muted)" />
+            <div className="mt-2 h-2 w-3/5 rounded bg-(--visual-muted)" />
             <div className="mt-7 grid grid-cols-3 gap-2">
-              {["JS", "TS", "AI", "SQL", "API", "CI"].map((item) => <span className="rounded-lg bg-white/5 px-1 py-3 text-center text-xs text-(--accent)" key={item}>{item}</span>)}
+              {["JS", "TS", "AI", "SQL", "API", "CI"].map((item) => <span className="rounded-lg bg-(--visual-muted) px-1 py-3 text-center text-xs text-(--accent)" key={item}>{item}</span>)}
             </div>
             <div className="mt-7 flex justify-between border-t border-(--line) pt-4 text-[11px] text-(--muted-inverse)">
               <span>BUILD</span>
@@ -55,6 +57,8 @@ export function About(): JSX.Element {
           {t("startConversation")}
         </Button>
       </div>
+      <Experience />
+      <Skills />
     </section>
   );
 }

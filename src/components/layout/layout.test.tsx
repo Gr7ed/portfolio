@@ -48,8 +48,24 @@ describe("Layout components", () => {
         </MemoryRouter>,
       );
 
-      await user.click(screen.getByRole("button", { name: "Expertise" }));
+      await user.click(screen.getByRole("link", { name: "Expertise" }));
       expect(onNavigate).toHaveBeenCalledWith("#services");
+    });
+
+    it("marks the URL section as active", () => {
+      render(
+        <MemoryRouter initialEntries={["/#work"]}>
+          <Header isOpen={false} onToggle={vi.fn()} onNavigate={vi.fn()} />
+        </MemoryRouter>,
+      );
+
+      expect(screen.getByRole("link", { name: "Projects" })).toHaveAttribute(
+        "aria-current",
+        "location",
+      );
+      expect(screen.getByRole("link", { name: "Projects" })).toHaveClass(
+        "site-nav-link-active",
+      );
     });
   });
 

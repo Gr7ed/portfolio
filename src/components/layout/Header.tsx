@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import logo from "../../assets/logo.jpg";
 import { useReveal } from "../../hooks/useReveal";
@@ -13,16 +14,73 @@ type HeaderProps = {
 
 export function Header({ isOpen, onToggle, onNavigate }: HeaderProps) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t, toggleLocale } = useLocale();
   const { theme, toggleTheme } = useTheme();
   const { elementRef, isVisible } = useReveal<HTMLElement>();
+  const [activeHash, setActiveHash] = useState<string | null>(
+    location.pathname === "/" ? location.hash || "#home" : null,
+  );
   const navItems = [
     { label: t("home"), hash: "#home" },
     { label: t("expertise"), hash: "#services" },
     { label: t("about"), hash: "#about" },
-    { label: t("experience"), hash: "#experience" },
     { label: t("projects"), hash: "#work" },
   ];
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setActiveHash(null);
+      return;
+    }
+
+    setActiveHash(location.hash || "#home");
+
+    const sections = navItems
+      .map((item) => document.getElementById(item.hash.slice(1)))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (sections.length === 0) {
+      return;
+    }
+
+    const updateActiveSection = () => {
+      const headerOffset = 96;
+      const sectionRects = sections.map((section) => ({
+        section,
+        rect: section.getBoundingClientRect(),
+      }));
+
+      if (
+        sectionRects.every(
+          ({ rect }) => rect.top === 0 && rect.height === 0,
+        )
+      ) {
+        return;
+      }
+
+      const currentSection = sectionRects.reduce<HTMLElement | null>(
+        (activeSection, { section, rect }) =>
+          rect.top <= headerOffset ? section : activeSection,
+        null,
+      );
+
+      setActiveHash(
+        currentSection ? `#${currentSection.id}` : `#${sections[0].id}`,
+      );
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    document.addEventListener("scroll", updateActiveSection, true);
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      document.removeEventListener("scroll", updateActiveSection, true);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, [location.hash, location.pathname]);
 
   return (
     <header
@@ -60,9 +118,21 @@ export function Header({ isOpen, onToggle, onNavigate }: HeaderProps) {
         )}
       >
         {navItems.map((item) => (
-          <button className="text-xl text-(--muted) transition hover:text-(--ink) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--accent) md:text-sm" key={item.hash} type="button" onClick={() => onNavigate(item.hash)}>
+          <Link
+            className={clsx(
+              "site-nav-link text-xl text-(--muted) transition hover:text-(--ink) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--accent) md:text-sm",
+              activeHash === item.hash && "site-nav-link-active",
+            )}
+            key={item.hash}
+            to={{ pathname: "/", hash: item.hash }}
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate(item.hash);
+            }}
+            aria-current={activeHash === item.hash ? "location" : undefined}
+          >
             {item.label}
-          </button>
+          </Link>
         ))}
         <button
           className="rounded-full border border-(--accent) px-4 py-2 text-sm font-bold text-(--accent) transition hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--accent)"

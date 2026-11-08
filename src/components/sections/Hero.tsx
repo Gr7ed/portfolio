@@ -72,11 +72,10 @@ export function Hero(): JSX.Element {
               </div>
             </div>
           </div>
-          <span className="absolute size-72 rounded-full border border-(--accent)/50 transform-[rotate(35deg)_scaleX(.35)]" />
-          <span className="absolute size-72 rounded-full border border-(--accent-secondary)/50 transform-[rotate(-35deg)_scaleX(.35)]" />
-          <span className="absolute bottom-8 inset-s-8 text-2xl text-(--accent)">&lt;/&gt;</span>
+
+          <span className="absolute bottom-4 inset-s-8 text-2xl text-(--accent)">&lt;/&gt;</span>
         </div>
-        <span className="absolute bottom-7 inset-e-10 text-left text-xs text-(--muted) rtl:text-right">
+        <span className="absolute bottom-4 inset-e-10 text-left text-xs text-(--muted) rtl:text-right ">
           {t("buildWith")}
           <br />
           <strong className="text-lg text-(--ink)">{t("purpose")}</strong>
