@@ -18,6 +18,7 @@ export function Header({ isOpen, onToggle, onNavigate }: HeaderProps) {
     { label: t("home"), hash: "#home" },
     { label: t("expertise"), hash: "#services" },
     { label: t("about"), hash: "#about" },
+    { label: t("experience"), hash: "#experience" },
     { label: t("projects"), hash: "#work" },
   ];
 
@@ -35,7 +36,7 @@ export function Header({ isOpen, onToggle, onNavigate }: HeaderProps) {
         <img src={logo} alt="" />
       </button>
       <button
-        className="menu-button"
+        className={clsx("menu-button", isOpen && "is-open")}
         type="button"
         aria-expanded={isOpen}
         aria-controls="site-nav"
@@ -54,7 +55,7 @@ export function Header({ isOpen, onToggle, onNavigate }: HeaderProps) {
         <button
           className="nav-contact"
           type="button"
-          onClick={() => navigate("/#contact")}
+          onClick={() => navigate("/#connect")}
         >
           {t("connect")} <span aria-hidden="true">↗</span>
         </button>

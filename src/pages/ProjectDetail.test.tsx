@@ -74,6 +74,7 @@ describe("ProjectDetail page", () => {
         "https://github.com/Gr7ed/pop-choice-app",
       );
     });
+
   });
 
   // Missing-project suite: verifies the explicit not-found state and recovery action.

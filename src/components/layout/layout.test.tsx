@@ -20,9 +20,22 @@ describe("Layout components", () => {
 
       const menuButton = screen.getByRole("button", { name: "Toggle menu" });
       expect(menuButton).toHaveAttribute("aria-expanded", "false");
+      expect(menuButton).not.toHaveClass("is-open");
 
       await user.click(menuButton);
       expect(onToggle).toHaveBeenCalledOnce();
+    });
+
+    it("marks the menu toggle open when the navigation is open", () => {
+      render(
+        <MemoryRouter>
+          <Header isOpen onToggle={vi.fn()} onNavigate={vi.fn()} />
+        </MemoryRouter>,
+      );
+
+      expect(screen.getByRole("button", { name: "Toggle menu" })).toHaveClass(
+        "is-open",
+      );
     });
 
     it("calls onNavigate with the selected section hash", async () => {

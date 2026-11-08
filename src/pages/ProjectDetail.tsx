@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Code2, ExternalLink } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Button } from "../components/ui/button";
+import { useReveal } from "../hooks/useReveal";
 import { useLocale } from "../i18n";
 
 export function ProjectDetail() {
@@ -13,6 +14,7 @@ export function ProjectDetail() {
   const sourceProject = projects.find((item) => item.id === projectId);
   const project = sourceProject ? localizeProject(sourceProject) : undefined;
   const [activeImage, setActiveImage] = useState(0);
+  const { elementRef, isVisible } = useReveal<HTMLElement>();
 
   useEffect(() => {
     setActiveImage(0);
@@ -46,7 +48,10 @@ export function ProjectDetail() {
   };
 
   return (
-    <main className="project-detail">
+    <main
+      ref={elementRef}
+      className={clsx("project-detail", "reveal", isVisible && "is-visible")}
+    >
       <div className="page-shell">
         <button className="back-link" type="button" onClick={() => navigate("/#work")}>
           <ArrowLeft className="arrow" aria-hidden="true" size={18} strokeWidth={1.8} />
