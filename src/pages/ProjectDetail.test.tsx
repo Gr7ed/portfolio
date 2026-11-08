@@ -67,7 +67,7 @@ describe("ProjectDetail page", () => {
 
       expect(screen.getByRole("link", { name: "Live site" })).toHaveAttribute(
         "href",
-        "https://popchoice.vercel.app/",
+        "https://pop-choice-app-production.suhail142176.workers.dev/",
       );
       expect(screen.getByRole("link", { name: "View source on GitHub" })).toHaveAttribute(
         "href",

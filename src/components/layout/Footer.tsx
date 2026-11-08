@@ -9,26 +9,26 @@ export function Footer() {
   return (
     <footer
       ref={elementRef}
-      className={clsx("site-footer", "reveal", isVisible && "is-visible")}
+      className={clsx("bg-(--footer) py-20 text-(--ink-inverse) sm:py-24", "reveal", isVisible && "is-visible")}
       id="contact"
     >
-      <div className="page-shell">
+      <div className="mx-auto w-[calc(100%-2rem)] max-w-6xl sm:w-[calc(100%-3rem)]">
         <div>
-          <p className="eyebrow">{t("technicalChallenge")}</p>
-          <h2 >
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-(--accent)">{t("technicalChallenge")}</p>
+          <h2 className="mt-4 flex flex-col gap-4 text-5xl font-semibold leading-[0.95] tracking-[-0.06em] sm:text-7xl">
             {t("footerTitleBefore")}
-            <br/>
+            <br  />
             <em>{t("footerTitleEmphasis")}</em>
           </h2>
         </div>
-        <a className="footer-email" href="mailto:suhail142176@gmail.com">
+        <a className="my-12 inline-block border-b border-(--accent) pb-2 text-lg text-(--accent) transition hover:text-(--ink-inverse)" href="mailto:suhail142176@gmail.com">
           suhail142176@gmail.com <span aria-hidden="true">↗</span>
         </a>
-        <div className="footer-bottom">
+        <div className="flex flex-col gap-5 border-t border-white/15 pt-5 text-xs text-slate-300 sm:flex-row sm:items-center sm:justify-between">
           <span>{t("copyright")}</span>
-          <div>
+          <div className="flex gap-5">
             <a
-              className="social-link"
+              className="flex items-center gap-2 transition hover:text-(--accent)"
               href="https://github.com/Gr7ed"
               target="_blank"
               rel="noreferrer"
@@ -42,7 +42,7 @@ export function Footer() {
               GitHub
             </a>
             <a
-              className="social-link"
+              className="flex items-center gap-2 transition hover:text-(--accent)"
               href="https://www.linkedin.com/in/suhail-khalil"
               target="_blank"
               rel="noreferrer"

@@ -26,11 +26,11 @@ export function ProjectDetail() {
 
   if (!project) {
     return (
-      <main className="project-detail">
-        <div className="page-shell">
-          <p className="eyebrow">{t("projectNotFound")}</p>
-          <h1>{t("projectMissing")}</h1>
-          <button className="back-link" type="button" onClick={() => navigate("/")}>
+      <main className="mx-auto min-h-screen w-[calc(100%-2rem)] max-w-6xl py-36 sm:w-[calc(100%-3rem)]">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">{t("projectNotFound")}</p>
+          <h1 className="mt-4 text-5xl font-semibold tracking-tight text-[var(--ink)]">{t("projectMissing")}</h1>
+          <button className="mt-8 text-sm text-[var(--muted)] hover:text-[var(--accent)]" type="button" onClick={() => navigate("/")}>
             ← {t("backHome")}
           </button>
         </div>
@@ -50,25 +50,25 @@ export function ProjectDetail() {
   return (
     <main
       ref={elementRef}
-      className={clsx("project-detail", "reveal", isVisible && "is-visible")}
+      className={clsx("min-h-screen py-32 sm:py-40", "reveal", isVisible && "is-visible")}
     >
-      <div className="page-shell">
-        <button className="back-link" type="button" onClick={() => navigate("/#work")}>
+      <div className="mx-auto w-[calc(100%-2rem)] max-w-6xl sm:w-[calc(100%-3rem)]">
+        <button className="inline-flex items-center gap-2 text-sm text-[var(--muted)] transition hover:text-[var(--accent)]" type="button" onClick={() => navigate("/#work")}>
           <ArrowLeft className="arrow" aria-hidden="true" size={18} strokeWidth={1.8} />
           {t("backToWork")}
         </button>
-        <div className="detail-heading">
-          <p className="eyebrow">{project.type}</p>
-          <h1>{project.title}</h1>
-          <p>{project.description}</p>
-          <div className="tag-list">
-            {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+        <div className="my-12 max-w-3xl sm:my-16">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">{project.type}</p>
+          <h1 className="mt-4 text-5xl font-semibold leading-[0.95] tracking-[-0.07em] text-[var(--ink)] sm:text-7xl">{project.title}</h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">{project.description}</p>
+          <div className="mt-7 flex flex-wrap gap-2">
+            {project.tags.map((tag) => <span className="border border-[var(--line)] px-2.5 py-1 text-xs text-[var(--accent)]" key={tag}>{tag}</span>)}
           </div>
         </div>
-        <section className="image-studio" aria-label={`${project.title} ${t("projectGallery")}`}>
-          <div className="image-studio-stage">
+        <section className="mx-auto max-w-5xl" aria-label={`${project.title} ${t("projectGallery")}`}>
+          <div className="relative aspect-video overflow-hidden bg-[var(--ink)]">
             <img
-              className="detail-image"
+              className="h-full w-full object-contain"
               src={currentImage}
               alt={t("imagePreview", {
                 title: project.title,
@@ -79,7 +79,7 @@ export function ProjectDetail() {
             {imageCount > 1 && (
               <>
                 <button
-                  className="gallery-control gallery-control-previous"
+                  className="absolute inset-y-0 start-0 flex w-14 items-center justify-center bg-gradient-to-r from-black/50 to-transparent text-white transition hover:bg-[var(--accent)]"
                   type="button"
                   onClick={showPreviousImage}
                   aria-label={t("previousImage")}
@@ -87,7 +87,7 @@ export function ProjectDetail() {
                   <ArrowLeft className="arrow" aria-hidden="true" size={18} strokeWidth={1.8} />
                 </button>
                 <button
-                  className="gallery-control gallery-control-next"
+                  className="absolute inset-y-0 end-0 flex w-14 items-center justify-center bg-gradient-to-l from-black/50 to-transparent text-white transition hover:bg-[var(--accent)]"
                   type="button"
                   onClick={showNextImage}
                   aria-label={t("nextImage")}
@@ -98,21 +98,21 @@ export function ProjectDetail() {
             )}
           </div>
           {imageCount > 1 && (
-            <div className="image-studio-footer">
-              <p aria-live="polite">
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs text-[var(--muted)]" aria-live="polite">
                 {t("imageOf", { current: activeImage + 1, total: imageCount })}
               </p>
-              <div className="image-thumbnails" aria-label={t("chooseProjectImage")}>
+              <div className="flex min-w-0 gap-2 overflow-x-auto p-1" aria-label={t("chooseProjectImage")}>
                 {project.images.map((image, index) => (
                   <button
-                    className={clsx("image-thumbnail", index === activeImage && "is-active")}
+                    className={clsx("h-12 w-[4.25rem] shrink-0 overflow-hidden border opacity-60 transition hover:opacity-100 focus-visible:outline-2 focus-visible:outline-[var(--accent)]", index === activeImage ? "border-[var(--accent)] opacity-100" : "border-transparent")}
                     type="button"
                     key={image}
                     onClick={() => setActiveImage(index)}
                     aria-label={`${t("showProjectImage")} ${index + 1}`}
                     aria-pressed={index === activeImage}
                   >
-                    <img src={image} alt="" />
+                    <img className="h-full w-full object-cover" src={image} alt="" />
                   </button>
                 ))}
               </div>
@@ -120,7 +120,7 @@ export function ProjectDetail() {
           )}
         </section>
         {(project.url || project.githubUrl) && (
-          <nav className="detail-links" aria-label={t("projectLinks")}>
+          <nav className="mt-7 flex flex-wrap justify-center gap-3" aria-label={t("projectLinks")}>
             {project.url && (
               <Button
                 href={project.url}
@@ -145,10 +145,10 @@ export function ProjectDetail() {
             )}
           </nav>
         )}
-        <div className="detail-footer">
-          <div>
-            <p className="eyebrow">{t("approach")}</p>
-            <p>{t("approachCopy")}</p>
+        <div className="mx-auto mt-16 flex max-w-4xl flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
+          <div className="max-w-xl">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">{t("approach")}</p>
+            <p className="mt-3 text-base leading-7 text-[var(--muted)]">{t("approachCopy")}</p>
           </div>
           <Button href="mailto:suhail142176@gmail.com" variant="outline">
             {t("startConversation")}

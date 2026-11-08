@@ -93,6 +93,12 @@ const translations = {
     contactEmphasis: "mind?",
     contactCopy: "Tell me what you are building, improving, or trying to understand. I will get back to you by email.",
     sendEmail: "Send an email",
+    contactName: "Your name",
+    contactEmail: "Email address",
+    contactMessage: "What are you building?",
+    contactSubmit: "Send message",
+    contactSending: "Sending...",
+    contactSuccess: "Message sent. I will be in touch soon.",
   },
   ar: {
     languageName: "English",
@@ -181,6 +187,12 @@ const translations = {
     contactEmphasis: "ذهنك؟",
     contactCopy: "أخبرني بما تبنيه أو تطوره أو تحاول فهمه، وسأرد عليك عبر البريد الإلكتروني.",
     sendEmail: "أرسل بريدًا",
+    contactName: "اسمك",
+    contactEmail: "البريد الإلكتروني",
+    contactMessage: "ماذا تبني؟",
+    contactSubmit: "إرسال الرسالة",
+    contactSending: "جارٍ الإرسال...",
+    contactSuccess: "تم إرسال الرسالة. سأتواصل معك قريبًا.",
   },
 } satisfies Record<Locale, Record<string, string>>;
 

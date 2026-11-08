@@ -31,24 +31,24 @@ export function Experience() {
   return (
     <section
       ref={elementRef}
-      className={clsx("experience-section", "reveal", isVisible && "is-visible")}
+      className={clsx("py-20 sm:py-28", "reveal", isVisible && "is-visible")}
       id="experience"
     >
-      <div className="page-shell">
+      <div className="mx-auto w-[calc(100%-2rem)] max-w-6xl sm:w-[calc(100%-3rem)]">
         <SectionHeading
           eyebrow={t("experienceLabel")}
           title={<>{t("experienceTitle")} <em>{t("experienceEmphasis")}</em></>}
           copy={t("experienceCopy")}
         />
-        <div className="experience-list">
+        <div className="mt-12 flex flex-col gap-5 border-s border-(--accent)/35 ps-5 sm:ps-8">
           {experiences.map((item) => (
-            <article className="experience-item" key={`${item.period}-${item.role}`}>
-              <span className="experience-period">{item.period}</span>
-              <div className="experience-marker" aria-hidden="true" />
-              <div className="experience-content">
-                <p className="experience-company">{item.company}</p>
-                <h3>{item.role}</h3>
-                <p>{item.copy}</p>
+            <article className="relative mb-10 grid gap-3 sm:grid-cols-[8rem_1fr]" key={`${item.period}-${item.role}`}>
+              <span className="text-xs text-(--muted)">{item.period}</span>
+              <div className="relative flex flex-col gap-4">
+                <span className="absolute inset-s-[-1.65rem] top-1 size-3 rounded-full border-4 border-(--paper) bg-(--accent) shadow-[0_0_0_1px_var(--accent)]" aria-hidden="true" />
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-(--accent)">{item.company}</p>
+                <h3 className="mt-2 text-2xl font-semibold text-(--ink)">{item.role}</h3>
+                <p className="mt-2 max-w-xl text-base leading-7 text-(--muted)">{item.copy}</p>
               </div>
             </article>
           ))}
