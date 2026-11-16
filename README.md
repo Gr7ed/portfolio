@@ -29,3 +29,5 @@ npx wrangler deploy
 
 The `[assets]` section must point to `./dist`; leaving it empty causes
 Cloudflare to report that the required `directory` property is missing.
+For Netlify, the included `public/_redirects` file configures this rewrite
+automatically.
